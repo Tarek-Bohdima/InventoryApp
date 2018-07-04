@@ -41,6 +41,7 @@ package com.example.android.inventoryapp.data;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import com.example.android.inventoryapp.data.ProductContract.ProductEntry;
 
 /**
  * Created by Tarek on 04-Jul-18.
@@ -71,11 +72,22 @@ public class ProductDbHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // Create a String that contains the SQL statement to create the pets table
+        // Create a String that contains the SQL statement to create the products table
+        String  SQL_CREATE_PRODUCTS_TABLE = "CREATE TABLE " + ProductEntry.TABLE_NAME + " ("
+                + ProductEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + ProductEntry.COLUMN_PRODUCT_NAME + " TEXT NOT NULL "
+                + ProductEntry.COLUMN_PRODUCT_PRICE + " INTEGER NOT NULL DEFAULT 0, "
+                + ProductEntry.COLUMN_PRODUCT_QUANTITY + " INTEGER NOT NULL DEFAULT 0, "
+                + ProductEntry.COLUMN_SUPPLIER_NAME + " TEXT, "
+                +ProductEntry.COLUMN_SUPPLIER_PHONE_NUMBER + " TEXT);";
 
-
+        // Execute the SQL statement
+        db.execSQL(SQL_CREATE_PRODUCTS_TABLE);
     }
 
+    /**
+     * This is called when the database needs to be upgraded.
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
