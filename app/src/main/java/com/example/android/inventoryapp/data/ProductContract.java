@@ -75,7 +75,7 @@ public class ProductContract {
          *
          * Type: TEXT
          */
-        public final static String COLUMN_PRODUCT_NAME = "product name";
+        public final static String COLUMN_PRODUCT_NAME = "product_name";
 
         /**
          * Price of the product.
@@ -96,14 +96,14 @@ public class ProductContract {
          *
          * Type: TEXT
          */
-        public final static String COLUMN_SUPPLIER_NAME = "supplier name";
+        public final static String COLUMN_SUPPLIER_NAME = "supplier_name";
 
         /**
          * Supplier phone
          *
          * Type: TEXT
          */
-        public final static String COLUMN_SUPPLIER_PHONE_NUMBER = "supplier phone number";
+        public final static String COLUMN_SUPPLIER_PHONE_NUMBER = "supplier_phone_number";
 
 
 

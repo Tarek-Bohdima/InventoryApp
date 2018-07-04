@@ -3,15 +3,13 @@ package com.example.android.inventoryapp;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.example.android.inventoryapp.data.ProductDbHelper;
 import com.example.android.inventoryapp.data.ProductContract.ProductEntry;
-
-import org.w3c.dom.Text;
+import com.example.android.inventoryapp.data.ProductDbHelper;
 
 /**
  * Displays list of products that were entered and stored in the app.
@@ -29,18 +27,20 @@ public class CatalogActivity extends AppCompatActivity {
         // To access our database, we instantiate our subclass of SQLiteOpenHelper
         // and pass the context, which is the current activity.
         mDHelper = new ProductDbHelper(this);
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
         insertProduct();
         displayDatabaseInfo();
     }
 
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        displayDatabaseInfo();
+//    }
+
     /**
      * Temporary helper method to display information in the onscreen TextView about the state of
-     * the pets database.
+     * the products database.
      */
     private void displayDatabaseInfo(){
         // Create and/or open a database to read from it
@@ -104,12 +104,12 @@ public class CatalogActivity extends AppCompatActivity {
                 String currentSupplierPhone = cursor.getString(supplierPhoneColumnIndex);
 
                 // Display the values from each column of the current row in the cursor in the TextView
-                displayView.append("\n" + currentID + " _ " +
+                displayView.append(("\n" + currentID + " _ " +
                 currentName + " _ " +
                 currentPrice + " _ " +
                 currentQuantity + " _ " +
                 currentSupplier + " _ " +
-                currentSupplierPhone);
+                currentSupplierPhone));
             }
         }finally {
             // Always close the cursor when you're done reading from it. This releases all its
@@ -126,7 +126,7 @@ public class CatalogActivity extends AppCompatActivity {
         SQLiteDatabase db = mDHelper.getWritableDatabase();
 
         // Create a ContentValues object where column names are the keys,
-        // and Toto's pet attributes are the values.
+        // and book attributes are the values.
         ContentValues values = new ContentValues();
         values.put(ProductEntry.COLUMN_PRODUCT_NAME, "The Old Man and the Sea");
         values.put(ProductEntry.COLUMN_PRODUCT_PRICE, 15);
